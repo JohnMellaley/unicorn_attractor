@@ -25,7 +25,7 @@ SECRET_KEY = 'le-5khuj*o5me^939%%#53^&+homaxa6ig1syb%p+rly-9@c=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),'unicorn-attractor-jm.herokuapp.com']
 
 
 # Application definition
