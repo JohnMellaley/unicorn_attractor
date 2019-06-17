@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    /*window.onload = function() {
+    if (window.jQuery) {  
+        // jQuery is loaded  
+        alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        alert("Doesn't Work");
+    }
+};*/
+$(document).on("click", "#likesButton", data=data,function(){
+    var token = '{{csrf_token}}';
+    var name = document.getElementById("bugName");
+    var bugName = name.firstChild.nodeValue;
+    console.log(e);
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'likes' %}"
+          })
+          .done(function(data) {
+              if(data.success) {
+                  $("#likesButton").fadeOut(100).fadeIn(100);
+                  alert(data.success);
+              } else 
+              { 
+                alert("fail");
+              }
+          });
+});
+   
+
+</script>
+<div class="row row-flex">
+    
+    <div class="container">
+        <div><button ><a href="add">Add a bug</a></button></div>
+        </br>
+        {% for bug in bugs %}
+            <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+                <h1 class="panel-heading panel-info"> Status: {{ bug.get_status_display }}</h1>
+                <h2 class="panel-title "> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
+                <div class="panel-body">
+                    <p>Author:{{ bug.author }}</p>
+                    <p class="product-description">Description:{{ bug.description }}</p>
+                    <p><button id="likesButton">{{ bug.vote }}</button></p>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+<script>
+ 
+    
+</script>
