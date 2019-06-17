@@ -1,14 +1,18 @@
 language: python
-before_install:
-    - chmod +x manage.py
-python:
-    - "3.6"
+
 # Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
 matrix:
-    include:
-      - python: 3.7
-        dist: xenial
-        sudo: true
-install: "pip install -r requirements.txt"
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: true
+      env:
+        - DEVELOPMENT=true
+        - HOSTNAME='0.0.0.0'
+        - IP='0.0.0.0'
+        - PORT='5000'
+
+install: "pip3 install -r requirements.txt"
+
 script:
-- SECRET_KEY="hello" ./manage.py test
+  - SECRET_KEY="whatever" ./manage.py test
