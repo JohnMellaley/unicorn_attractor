@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+   
+$(document).on("click", "#likesButton", function(){
+    var token = '{{csrf_token}}';
+    
+    var bug_id = document.getElementById("id");
+    var bugid = bug_id.firstChild.nodeValue;
+        $.ajax({
+            type: 'GET',
+            data: {
+              bug_id: bugid
+            },
+            url: "{% url 'likes' %}"
+          })
+          .done(function(data) {
+              if(data.success) {
+                  $("#likesButton").fadeOut(100).fadeIn(100);
+                  $("#likesButton").text(data.likes);
+                  alert(data.success);
+              } else 
+              { 
+                alert(data.error);
+              }
+          });
+});
+   
+
+</script>
+<div class="container">
+    <h1> Status: {{ bug.get_status_display }}</h1>
+    <h2> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
+    <p>ID: <span id="id"> {{ bug.id }}</span></p>
+    <p>Author:{{ bug.author }}</p>
+    <p class="product-description">Description:{{ bug.description }}</p>
+    <p><button id="likesButton">{{ bug.vote }}</button></p>
+</div>
+
+{% endblock %}

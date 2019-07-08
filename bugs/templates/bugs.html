@@ -2,20 +2,13 @@
 
 {% block content %}
 <script>
-    /*window.onload = function() {
-    if (window.jQuery) {  
-        // jQuery is loaded  
-        alert("Yeah!");
-    } else {
-        // jQuery is not loaded
-        alert("Doesn't Work");
-    }
-};*/
-$(document).on("click", "#likesButton", data=data,function(){
+   
+$(document).on("click", "#likesButton", function(){
     var token = '{{csrf_token}}';
-    var name = document.getElementById("bugName");
+    alert("test");
+    var name = document.getElementById("id");
     var bugName = name.firstChild.nodeValue;
-    console.log(e);
+    console.log(bugName);
         $.ajax({
             type: 'GET',
             url: "{% url 'likes' %}"
@@ -43,9 +36,11 @@ $(document).on("click", "#likesButton", data=data,function(){
                 <h1 class="panel-heading panel-info"> Status: {{ bug.get_status_display }}</h1>
                 <h2 class="panel-title "> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
                 <div class="panel-body">
+                    <p id="id">ID: {{ bug.id }}</p>
                     <p>Author:{{ bug.author }}</p>
                     <p class="product-description">Description:{{ bug.description }}</p>
-                    <p><button id="likesButton">{{ bug.vote }}</button></p>
+                    <p>Likes : {{ bug.vote }}</p>
+                    <a href="{% url 'viewbug' bug.id %}"> view for {{ bug.id }}</a> 
                 </div>
             </div>
     {% endfor %}
@@ -53,7 +48,3 @@ $(document).on("click", "#likesButton", data=data,function(){
 </div>
 {% endblock %}
 
-<script>
- 
-    
-</script>

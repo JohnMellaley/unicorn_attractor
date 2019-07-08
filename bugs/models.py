@@ -32,3 +32,5 @@ class UserBug(models.Model):
    
     class Meta: 
         unique_together = ('userid', 'bugid')
+        
+    
