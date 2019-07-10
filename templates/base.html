@@ -11,6 +11,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome.min.css' %}">
    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -19,18 +20,27 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
+    <nav class="navbar navbar-default ">
+        <ul class="nav navbar-nav ">
             {% if user.is_authenticated %}
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}  
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'registration' %}">Register</a></li>
             {% endif %}
+             <li>
+                <a href="{% url 'view_cart' %}">
+                    <i class="fa fa-shipping-cart"></i>Cart
+                    {% if feature_count > 0 %}
+                        <label class="badge badge-warning">{{ feature_count }}</label>
+                    {% endif %}
+                </a>
+            </li>
         </ul>
     </nav>
     <h1>{% block page_heading %}{% endblock %}</h1>

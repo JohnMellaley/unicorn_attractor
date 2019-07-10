@@ -19,11 +19,17 @@ from accounts.views import index
 from accounts import urls as accounts_urls
 from bugs import urls as bugs_urls
 from bugs.views import all_bugs
+from features import urls as features_urls
+from features.views import all_features
+from cart import urls as urls_cart
 from django.views import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index, name="index"),
     url(r'^accounts/', include(accounts_urls)),
-    url(r'^bugs/', include(bugs_urls))
+    url(r'^cart/',include(urls_cart)),
+    url(r'^bugs/', include(bugs_urls)),
+    url(r'^features/', include(features_urls)),
+    
 ]

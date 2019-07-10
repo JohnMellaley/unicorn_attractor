@@ -30,12 +30,23 @@ $(document).on("click", "#likesButton", function(){
 
 </script>
 <div class="container">
-    <h1> Status: {{ bug.get_status_display }}</h1>
-    <h2> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
-    <p>ID: <span id="id"> {{ bug.id }}</span></p>
-    <p>Author:{{ bug.author }}</p>
-    <p class="product-description">Description:{{ bug.description }}</p>
-    <p><button id="likesButton">{{ bug.vote }}</button></p>
+    <div class="col-xs-6">
+        <h1> Status: {{ bug.get_status_display }}</h1>
+        <h2> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
+        <p>ID: <span id="id"> {{ bug.id }}</span></p>
+        <p>Author:{{ bug.author }}</p>
+        <p class="product-description">Description:{{ bug.description }}</p>
+        <p><button id="likesButton">{{ bug.vote }}</button></p>
+    </div>
+    <div class="col-xs-6">
+       {% for post in posts %}
+        <p><h3>Published Date :</h3>{{ post.published_date }}</p>
+        <div><h3>Title :</h3><span>{{ post.title }}</span></div>
+        <p><h3>Content :</h3>{{ post.content }}</p>
+        <p><h3>Author :</h3>{{ post.author }}</p>
+    {% endfor %}  
+    </div>
+    <a href="{% url 'create_post' bug.id %}">Comment</a>  
 </div>
 
 {% endblock %}

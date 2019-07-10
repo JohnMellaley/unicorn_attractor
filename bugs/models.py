@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # from django.contrib.auth import get_user_model
 
 
@@ -16,12 +17,7 @@ class Bug(models.Model):
     )
     status = models.CharField(max_length=1, choices=STATUS, default='q')
     author = models.ForeignKey(User, default=None)
-#        models.ForeignKey(
-#      get_user_model(),
-#      on_delete=models.CASCADE
-#   )
     
-   
     def __str__(self):
         return self.name
         
@@ -33,4 +29,17 @@ class UserBug(models.Model):
     class Meta: 
         unique_together = ('userid', 'bugid')
         
+class Post(models.Model):
+    """
+    A single Blog post
+    """
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    author = models.ForeignKey(User, default=None)
+    bugid = models.ForeignKey(Bug, default=None)
+
+    def __unicode__(self):
+        return self.title
     

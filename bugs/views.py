@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from django.http import JsonResponse
-from .models import Bug, UserBug
-from .forms import BugForm
+from .models import Bug, UserBug, Post
+from .forms import BugForm, BlogPostForm
 from django.contrib.auth.models import User
+
 # Create your views here.
 
 def all_bugs(request):
@@ -26,7 +28,27 @@ def create_an_bug(request):
     
 def viewbug(request, bugid):
     mybug = Bug.objects.get(id=bugid)
-    return render (request, "viewbug.html", {"bug": mybug})
+    posts = Post.objects.filter(bugid=mybug.id)
+    return render (request, "viewbug.html", {"bug": mybug, "posts":posts})
+    
+    
+def create_post(request, bugid):
+    """
+    Create a view that allows us to create
+     a post
+    """
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        bug = Bug.objects.get(id=bugid)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.bugid = bug
+            instance.save()
+            return redirect("viewbug", bugid)
+    else:
+        form = BlogPostForm()
+    return render(request, 'blogpostform.html', {'form': form})
     
 def likes(request):
     # get bug id
