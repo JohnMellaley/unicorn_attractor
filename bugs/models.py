@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import datetime
 # from django.contrib.auth import get_user_model
 
 
@@ -17,6 +18,7 @@ class Bug(models.Model):
     )
     status = models.CharField(max_length=1, choices=STATUS, default='q')
     author = models.ForeignKey(User, default=None)
+    created_date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name

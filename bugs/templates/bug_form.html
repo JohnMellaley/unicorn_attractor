@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load bootstrap_tags %}
 
-
+<div class="container">
     <h1>To Add a bug</h1>
     
     <form method="POST">
 
-            {% csrf_token %}
+        {% csrf_token %}
             
-            
-           {{ form.as_p }}
+         <div class="form-group col-xs-12">
+            {{ form | as_bootstrap }}
+        </div>
+         
            
+        <div class="form-group col-xs-12">
             <button type="submit">Save</button>
-        </form>
+        </div>
+    </form>
+</div>
 {% endblock %}

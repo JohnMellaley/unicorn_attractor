@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.core.mail import send_mail
+from bugs.models import Bug
+from features.models import Feature
 
 # Create your views here.
 def index(request):
@@ -68,7 +70,8 @@ def registration(request):
 def user_profile(request):
     """ this is the users profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, "profile.html", {"profile": user})
+    bugs = Bug.objects.all().order_by('-vote')
+    return render(request, "profile.html", {"profile": user}, {"bugs":bugs})
         
         
         

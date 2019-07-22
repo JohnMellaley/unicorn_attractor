@@ -5,4 +5,20 @@
 
 {% block content %}
 <p>{{ profile.email }}</p>
+    {% for bug in bugs %}
+                <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
+                    
+                    <div class="panel-body">
+                        <h3 class="panel-heading panel-primary"> Name: <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
+                        <h2 class="panel-title "> <strong>Status :</strong> {{ bug.get_status_display }}</h2><br>
+                        <p id="id"><strong>ID:</strong> {{ bug.id }}</p>
+                        <p id="created_date"><strong>Creation date:</strong> {{ bug.created_date }}</p>
+                        <p><strong>Author:</strong> {{ bug.author }}</p>
+                        <p class="product-description"><strong>Description:</strong>{{ bug.description|truncatewords:7  }}</p>
+                        <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></p><br>
+                        <a class="btn btn-primary" role="button" href="{% url 'viewbug' bug.id %}">view for {{ bug.id }}</a>
+                        
+                    </div>
+                </div>
+    {% endfor %}
 {% endblock %}

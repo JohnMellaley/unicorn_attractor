@@ -16,11 +16,16 @@ body {
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
+    background-color:#337ab7;
 }
 
-.label-warning[href],
-.badge-warning[href] {
-    background-color: #c67605;
+.panel-heading{
+    text-transform: capitalize;
+    width: 100%;
+    height: 15%;
+    word-wrap: break-word; 
+    background-color: #337ab7;
+    color: white;
 }
 
 
@@ -28,28 +33,48 @@ caption p {
     word-wrap: break-word;
 }
 
+.instructions{
+    margin: 20px 0px;
+    border: solid;
+    padding: 5px;
+}
 .row.row-flex {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
 }
 
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
-}
-
 .panel-body {
     height: 100%;
-    border: 1px solid #ddd;
+    border: 1px;
+    box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
 }
 
 .feature-description {
     min-height: 40px;
 }
 
+.comment {
+    font-size: larger;
+}
+
+
+
+.post_block{
+    border: 1px;
+    padding: 10px;
+    margin-top:20px;
+    box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+    
+}
+
+.content_heading{
+    margin-right: 100px;
+    border-bottom-style:solid;
+}
+
 form {
-    width: 50%;
+    width: 100%;
 }
 
 h1 {

@@ -2,33 +2,40 @@
 
 {% block content %}
 <div class="container">
+    <h1>All Features</h1>
+    <div class="instructions">
+        For Features, you can vote for as many features as you like and as many times as you like (can increase the quantity, but each vote will cost 30 euros.
+    </div>
+    <div><button><a href="{% url 'create_feature' %}">Add Feature</a></button></div>
     <div class="row row-flex">
+    <br>
         {% for feature in features %}
-            <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
                 <div class="panel-body">
-    
-                    <h3>{{ feature.name }}</h3>
-                    <p class="feature-description">{{ feature.description }}</p>
-                    <p>{{ feature.price }}</p>
-                    <p>{{ feature.status }}</p>
-                    <p>{{ feature.author }}</p>
-                    <p>{{ feature.vote }}</p>
+                    <h3 class="panel-heading panel-primary">Name: <span data={{ feature.name }}> {{ feature.name }}</span></h3>
+                    <h5 class="panel-title"><strong>Status:</strong>{{ feature.get_status_display }}</h5><br>
+                    <p><strong>Feature ID:</strong> {{ feature.id }}</p>
+                    <p id="created_date"><strong>Creation date:</strong> {{ feature.created_date }}</p>
+                    <p class="feature-description"><strong>Description:</strong>{{ feature.description|truncatewords:7 }}</p>
+                    <p><strong>Price:</strong> {{ feature.price }}</p>
+                    <p><strong>Author:</strong>{{ feature.author }}</p>
+                    <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ feature.vote }}</span></p>
+                    <br>
                     <form method="post" action="{% url 'add_to_cart' feature.id %}">
                         {% csrf_token %}
                         <div class="input-group">
-                        <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="submit">Add</button>
-                            </span>
+                            <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity"></input>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Add</button>
+                                </span>
                         </div>
-                    </form>
+                    </form> 
+                    <br>
+                    <a class="btn btn-primary" role="button" href="{% url 'viewfeature' feature.id %}">view for {{ feature.id }}</a>
                 </div>
             </div>
         {% endfor %}
-        <div>
-            <a href="{% url 'create_feature' %}">Add Feature</a> 
-        </div>    
-         
-    </div>  
+    </div> 
 </div>
+
 {% endblock %}

@@ -30,23 +30,45 @@ $(document).on("click", "#likesButton", function(){
 
 </script>
 <div class="container">
-    <div class="col-xs-6">
-        <h1> Status: {{ bug.get_status_display }}</h1>
-        <h2> Name : <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h2>
-        <p>ID: <span id="id"> {{ bug.id }}</span></p>
-        <p>Author:{{ bug.author }}</p>
-        <p class="product-description">Description:{{ bug.description }}</p>
-        <p><button id="likesButton">{{ bug.vote }}</button></p>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 display panel">
+            <div class="panel-body">
+                <h3 class="panel-heading panel-primary"> Name: <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
+                <h2 class="panel-title "> <strong>Status :</strong> {{ bug.get_status_display }}</h2><br>
+                <p ><strong >ID:</strong> <span id="id"> {{ bug.id }} </span></p>
+                <p id="created_date"><strong>Creation date:</strong> {{ bug.created_date }}</p>
+                <p><strong>Author:</strong> {{ bug.author }}</p>
+                <p class="product-description"><strong>Description:</strong>{{ bug.description|truncatewords:7  }}</p>
+                <button id="likesButton" class="badge badge-primary"> <span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></button><br>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-6">
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="{% url 'create_post_bug' bug.id %}"><span class="comment">Add Comment</span></a><br>
+        </div>
+    </div>
+        
+   
+
+   
        {% for post in posts %}
-        <p><h3>Published Date :</h3>{{ post.published_date }}</p>
-        <div><h3>Title :</h3><span>{{ post.title }}</span></div>
-        <p><h3>Content :</h3>{{ post.content }}</p>
-        <p><h3>Author :</h3>{{ post.author }}</p>
+        <div class="post_block">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4><strong>Published Date : </strong>{{ post.published_date }}</h4>
+                    <h4><strong>Title : </strong>{{ post.title }}</h4>
+                    <h4><strong>Author : </strong>{{ post.author }}</h4>
+                </div>
+                <div class="col-xs-6">
+                    <h4 class="content_heading"><strong>Content</strong> : </h4>
+                    <h4>{{ post.content }}</h4>
+                </div>
+            </div>
+        </div>
     {% endfor %}  
-    </div>
-    <a href="{% url 'create_post' bug.id %}">Comment</a>  
+    <br>
+     
 </div>
 
 {% endblock %}

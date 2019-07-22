@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def all_bugs(request):
-    bugs = Bug.objects.all()
+    bugs = Bug.objects.all().order_by('-vote')
     return render(request, "bugs.html", {"bugs": bugs})
     
 def create_an_bug(request):
@@ -32,7 +32,7 @@ def viewbug(request, bugid):
     return render (request, "viewbug.html", {"bug": mybug, "posts":posts})
     
     
-def create_post(request, bugid):
+def create_post_bug(request, bugid):
     """
     Create a view that allows us to create
      a post
