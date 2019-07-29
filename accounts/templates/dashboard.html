@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block head_js %}
+
+{% endblock head_js %}
+{% block content %}
+
+<h1> Site Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <h5>Bugs with Most Likes</h5>
+            <canvas id="chart_user_likes"></canvas>
+        </div>
+        <div>
+            <h5>Features with most likes</h5>
+            <div id="chart_user_likes2"></div>
+        </div>
+    </div> 
+    <div class="row">
+        <div>
+            <h5>Bug Status</h5>
+            <div id="chart_origin"></div>
+        </div>
+        <div>
+            <h5>Features Status</h5>
+            <div id="chart_origin"></div>
+        </div>
+            
+    </div>
+    <div>
+        <h5>Features vs Bugs Break down</h5>
+        <div id="chart_type"></div>
+     </div>
+    
+   
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    function renderChart(id, labels, data){
+      //  alert(id,labels,data);
+      //    alert(typeof(labels));
+    //    var ctx = document.getElementById('chart_user_likes').getContext('2d');
+    //    var ctx = $('#'+ id )
+    //    var chart = new Chart(ctx, {
+            // The type of chart we want to create
+   //         type: 'bar',
+        
+            // The data for our dataset
+    //        data: {
+    //            labels: labels,
+    //            datasets: [{
+    //                label: 'Vote per Bug',
+    //                backgroundColor: [
+    //                    'rgba(255, 99, 132, 0.2)',
+    //                    'rgba(55, 99, 132, 0.2)',
+    //                    'rgba(255, 50, 132, 0.2)',
+    //                    'rgba(255, 99, 75, 0.2)',
+    //                    'rgba(255, 99, 132, 0.2)',
+   //                     'rgba(255, 99, 132, 0.2)'
+   //                 ],
+   //                 borderColor: [
+   //                     'rgba(255, 99, 132,1)',
+   //                     'rgba(255, 99, 132,1)',
+   //                     'rgba(255, 99, 132,1)',
+   //                     'rgba(255, 99, 132,1)',
+   //                     'rgba(255, 99, 132,1)',
+   //                     'rgba(255, 99, 132,1)'
+   //                 ],
+  //                  data: data
+   //             }]
+   //         },
+            // Configuration options go here
+   //         options: {},
+   //     });
+    }
+
+    var method = 'GET';
+    var data ={};
+
+    $.ajax({
+        url: "{% url 'dashboard_data_view' %}",
+        method:method,
+        data:data,
+        success: function(responsedata){
+           console.log(responsedata.labels,responsedata.votes);
+            var labels= ('a','b');
+         //   renderChart("chart_user_likes",labels, responsedata.data);
+        }, error: function(error){
+            $.alert("an erro as occurred")
+        }
+    });
+    
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3-queue.v3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript" src="/static/js/charts.js"></script>
+{% endblock %}

@@ -3,3 +3,45 @@
 {% block page_title %}Home Page{% endblock %}
 {% block page_heading %}Home{% endblock %}
 
+{% block content %}
+<div class="container">
+<div>Here is the bugs table</div>
+<table>
+    <tr>
+        <th>In Queue</th>
+        <td>{{ queue_count }}</td>
+    </tr>
+    <tr>
+        <th>In Prgress</th>
+        <td>{{ progress_count }}</td>
+    </tr>
+    <tr>
+        <th>Completed</th>
+        <td>{{ complete_count }}</td>
+    </tr>
+    <tr>
+        <th>Total</th>
+        <td>{{ bug_total }}</td>
+    </tr>
+</table>
+<div>Here is the features Table</div>
+<table>
+    <tr>
+        <th>In Queue</th>
+        <td>{{ fqueue_count }}</td>
+    </tr>
+    <tr>
+        <th>In Prgress</th>
+        <td>{{ fprogress_count }}</td>
+    </tr>
+    <tr>
+        <th>Completed</th>
+        <td>{{ fcomplete_count }}</td>
+    </tr>
+    <tr>
+        <th>Total</th>
+        <td>{{ feature_total }}</td>
+    </tr>
+</table>
+{% endblock %}
+

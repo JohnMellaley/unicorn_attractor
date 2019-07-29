@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
-{% block page_title %}{{ user }}'s Profile{% endblock %}
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
+
+    {% block page_title %}{{ user }}'s Profile{% endblock %}
+
+    {% block page_heading %}<div class="container">
+        {{ user }}'s Profile</div>
+    {% endblock %}
+
 
 {% block content %}
-<p>{{ profile.email }}</p>
+<div class="container">
+    <p>{{ profile.email }}</p>
+    
+    <div>
+        <h3>Here is a list of your bugs</h3>
+    </div>
+    <div class="row">
     {% for bug in bugs %}
-                <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
+   
+                <div class="col-xs-12 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
                     
                     <div class="panel-body">
                         <h3 class="panel-heading panel-primary"> Name: <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
@@ -16,9 +28,31 @@
                         <p><strong>Author:</strong> {{ bug.author }}</p>
                         <p class="product-description"><strong>Description:</strong>{{ bug.description|truncatewords:7  }}</p>
                         <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></p><br>
+                        
                         <a class="btn btn-primary" role="button" href="{% url 'viewbug' bug.id %}">view for {{ bug.id }}</a>
                         
                     </div>
                 </div>
+    </div>
     {% endfor %}
+    <div class="row">
+        <h3>Here is a list of your features</h3>
+    {% for feature in features %}
+        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
+            <div class="panel-body">
+                <h3 class="panel-heading panel-primary">Name: <span data={{ feature.name }}> {{ feature.name }}</span></h3>
+                <h5 class="panel-title"><strong>Status:</strong>{{ feature.get_status_display }}</h5><br>
+                <p><strong>Feature ID:</strong> {{ feature.id }}</p>
+                <p id="created_date"><strong>Creation date:</strong> {{ feature.created_date }}</p>
+                <p class="feature-description"><strong>Description:</strong>{{ feature.description|truncatewords:7 }}</p>
+                <p><strong>Price:</strong> {{ feature.price }}</p>
+                <p><strong>Author:</strong>{{ feature.author }}</p>
+                <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ feature.vote }}</span></p>
+                <br>
+                <a class="btn btn-primary" role="button" href="{% url 'viewfeature' feature.id %}">view for {{ feature.id }}</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}
