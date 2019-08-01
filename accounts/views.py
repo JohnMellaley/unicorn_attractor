@@ -14,6 +14,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 
 
+
 # Create your views here.
 def index(request):
     """return index page"""
@@ -95,26 +96,30 @@ def user_profile(request):
 def statistics(request):
 	return render(request, 'dashboard.html')   
 	
-def getdata(self):
-    print("i am in dashboard view getdata")
-    bugs = Bug.objects.all()
-    c = serializers.serialize('json', bugs, fields=('name','status','vote','id'))
-    print("hello", c)
-    return JsonResponse(c)
+def getdata_bug(self):
+    bugs = Bug.objects.all();
+    c = json.dumps( [{'name': o.name, 'vote':o.id} for o in bugs] )
+    return HttpResponse(c, content_type='application/json')
     
-	
-
-def dashboard_data_view(self):
-   # print("iam in dashboard view")
-   # bugs = Bug.objects.all()
-    # c = serializers.serialize('json', bugs, fields=('name','status','vote','id'))
-  #  print("hello")
-  #  print(c)
-    data = {}
-    data['labels']=["a","b","c","d","e"]
-    data['votes']=[2,5,8,9,10,12]
-  #  print(data)
-    return JsonResponse(data)
-        
+def getdata_feature(self):
+    features = Feature.objects.all();
+    d = json.dumps( [{'feature_name': o.name, 'feature_vote':o.id} for o in features] )
+    return HttpResponse(d, content_type='application/json')
     
+def getdata_bug_user(self):
+    bugs = Bug.objects.all();
+    e = json.dumps( [{'author': o.author.username, 'name': o.name} for o in bugs] )
+    return HttpResponse(e, content_type='application/json')
+    
+def getdata_feature_user(self):
+    features = Feature.objects.all();
+    f = json.dumps( [{'author': o.author.username, 'name': o.name} for o in features] )
+    return HttpResponse(f, content_type='application/json')
+    
+def bug_feature_count(self):
+    total_bug_count = Bug.objects.all().count()
+    total_feature_count = Feature.objects.all().count()
+    g = json.dumps([{ "name":'bugs', "count": total_bug_count}, {"name":'Features', "count": total_feature_count} ])
+    print(g)
+    return HttpResponse(g, content_type='application/json')
     
