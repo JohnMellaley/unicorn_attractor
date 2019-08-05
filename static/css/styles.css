@@ -1,7 +1,121 @@
-body {
-    font-family: Arial;
+html {
+  height: 100%;
 }
 
+body {
+    font-family: Arial;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+.navbar-fixed-top{
+    padding:0;
+    margin-bottom: 50px;
+    background-color:#21283f;
+}
+
+.menu-dropdown {
+    background-color: black;
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+
+.navbar-dropdown span:hover{
+    color:blue;
+}
+
+.navbar-dropdown:hover .menu-dropdown{
+    display: block;
+    padding-right:10px;
+    padding-left:20px;
+    line-height:1.5;
+}
+
+.menu-dropdown li{
+    display: inline-block;
+}
+
+
+.menu-dropdown a:hover{
+    color: white;
+}
+
+.bg-footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.copyright{
+    color:#337ab7;
+}
+.social-links{
+    text-align: right;
+}
+
+.social-links i {
+    font-size:20px;
+    color: #337ab7;
+    width: 32px;
+    height: 32px;
+    padding: 12px 0;
+    border-radius: 50%;
+}
+
+.social-links i:hover{
+    color:white;
+}
+
+.list-inline{
+    display:inline;
+}
+
+
+/*main image on background */
+.hero-image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('/static/img/400dpiLogo.png');
+    background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/400dpiLogo.png');
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/400dpiLogo.png');
+    background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/400dpiLogo.png');
+    background-image: -ms-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/400dpiLogo.png');  
+    overflow:auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size:  contain;
+    -ms-background-size: contain;
+    background-position: center;
+    min-height: 200px; /*added so would display on IE */
+    height: 100%;
+    position: relative; 
+}
+
+@media screen and (min-width: 768px) {
+   body{
+        padding-top: 50px; 
+    }
+    .hero-image{
+        min-height: 300px;
+    }
+} 
+
+@media screen and (min-width: 991px)  {
+    body{
+        padding-top: 50px; 
+    }
+    .hero-image{
+            min-height: 400px;
+    }
+}
+.indexheading{
+    text-decoration: underline;
+}
 .icon-bar {
     background-color: #fff;
 }
@@ -63,8 +177,6 @@ table, th, td {
     font-size: larger;
 }
 
-
-
 .post_block{
     border: 1px;
     padding: 10px;
@@ -83,5 +195,5 @@ form {
 }
 
 h1 {
-    color:red;
+    color:blue;
 }

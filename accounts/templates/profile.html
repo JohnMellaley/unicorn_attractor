@@ -3,14 +3,11 @@
 
     {% block page_title %}{{ user }}'s Profile{% endblock %}
 
-    {% block page_heading %}<div class="container">
-        {{ user }}'s Profile</div>
-    {% endblock %}
-
-
 {% block content %}
+
 <div class="container">
-    <p>{{ profile.email }}</p>
+    <h1>{{ user }}'s Profile. </h1>
+    <h3>Email: {{ profile.email }}</h3>
     
     <div>
         <h3>Here is a list of your bugs</h3>
@@ -33,8 +30,9 @@
                         
                     </div>
                 </div>
-    </div>
+   
     {% endfor %}
+     </div>
     <div class="row">
         <h3>Here is a list of your features</h3>
     {% for feature in features %}

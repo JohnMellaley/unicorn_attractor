@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"/>
    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -28,33 +29,63 @@
     <title>{% block page_title %}{% endblock %}</title>
 </head>
 <body>
+    <div class="row hidden-xs menuheader">
+            <ul class="nav navbar-nav navbar-fixed-top text-primary">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
+                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                    <li>
+                        <a href="{% url 'view_cart' %}">
+                            <i class="fa fa-shipping-cart"></i>Cart
+                            {% if feature_count > 0 %}
+                                <label class="badge badge-warning">{{ feature_count }}</label>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}  
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'registration' %}">Register</a></li>
+                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                {% endif %}
+                 
+            </ul>
+    </div>
+    <div class="row visible-xs visible-sm">
+        <div class="navbar-dropdown col-xs-1">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			<ul class="menu-dropdown">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
+                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                    <li>
+                        <a href="{% url 'view_cart' %}">
+                            <i class="fa fa-shipping-cart"></i>Cart
+                            {% if feature_count > 0 %}
+                                <label class="badge badge-warning">{{ feature_count }}</label>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}  
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'registration' %}">Register</a></li>
+                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+     
     
-    <nav class="navbar navbar-default ">
-        <ul class="nav navbar-nav ">
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'bugs' %}">Bugs</a></li>
-                <li><a href="{% url 'features' %}">Features</a></li>
-                <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}  
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'registration' %}">Register</a></li>
-                <li><a href="{% url 'statistics' %}">Statistics</a></li>
-            {% endif %}
-             <li>
-                <a href="{% url 'view_cart' %}">
-                    <i class="fa fa-shipping-cart"></i>Cart
-                    {% if feature_count > 0 %}
-                        <label class="badge badge-warning">{{ feature_count }}</label>
-                    {% endif %}
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <h1>{% block page_heading %}{% endblock %}</h1>
+     
     
     {% if messages %}
     <div>
@@ -64,6 +95,26 @@
     </div>
     {% endif %}
     {% block content %} {% endblock %}
+    <br>
+    <footer class="bg-footer">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12 copyright">
+                  <span>© 2019 Copyright John Mellaley</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 center-block">
+                    <ul class ="list-inline social-links">
+                            <li><a target="_blank" href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a target="_blank" href=""><i class="fa fa-instagram"></i></a></li>
+                            <li><a target="_blank" href=""><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
     
 </body>
 </html>

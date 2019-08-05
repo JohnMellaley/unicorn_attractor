@@ -1,47 +1,76 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Home Page{% endblock %}
-{% block page_heading %}Home{% endblock %}
-
 {% block content %}
+<div class="hero-image"></div>
 <div class="container">
-<div>Here is the bugs table</div>
-<table>
-    <tr>
-        <th>In Queue</th>
-        <td>{{ queue_count }}</td>
-    </tr>
-    <tr>
-        <th>In Prgress</th>
-        <td>{{ progress_count }}</td>
-    </tr>
-    <tr>
-        <th>Completed</th>
-        <td>{{ complete_count }}</td>
-    </tr>
-    <tr>
-        <th>Total</th>
-        <td>{{ bug_total }}</td>
-    </tr>
-</table>
-<div>Here is the features Table</div>
-<table>
-    <tr>
-        <th>In Queue</th>
-        <td>{{ fqueue_count }}</td>
-    </tr>
-    <tr>
-        <th>In Prgress</th>
-        <td>{{ fprogress_count }}</td>
-    </tr>
-    <tr>
-        <th>Completed</th>
-        <td>{{ fcomplete_count }}</td>
-    </tr>
-    <tr>
-        <th>Total</th>
-        <td>{{ feature_total }}</td>
-    </tr>
-</table>
+    <div class="row">
+        <div class="about col-md-12">
+            <h3 class="indexheading text-primary">What we do:</h3>
+            <p>Unicorn Attractor is a leading software development company that allows registered users to request bug fix’s
+            and feature updates.</p>
+            <h3 class="indexheading text-primary">How we do it:</h3>
+            <p>Bug fix's which will be done for free, priority giving to the bug with the most upvotes. Users can also request 
+            new features which again priority will give to the feature with the most upvotes only in this case each up 
+            upvote will have a set cost.</p>
+            <p>Bugs you can only vote for each bug one, but for features you can vote as much as you like if you willing to
+            paythe cost.</p>
+            <p>Developers time will be split 50% of the time between fixing Bugs and features.</p>
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-md-6 display panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Bugs Stats</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>In Queue</th>
+                        <td>{{ queue_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>In Prgress</th>
+                        <td>{{ progress_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Completed</th>
+                        <td>{{ complete_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{ bug_total }}</td>
+                    </tr>
+                </table>
+             </div>
+        </div>
+    
+        <div class="col-md-6 display panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Features Stats</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>In Queue</th>
+                        <td>{{ fqueue_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>In Prgress</th>
+                        <td>{{ fprogress_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Completed</th>
+                        <td>{{ fcomplete_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{ feature_total }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>   
+    </div>
+</div>
 {% endblock %}
 

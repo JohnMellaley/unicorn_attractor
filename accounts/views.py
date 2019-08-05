@@ -28,7 +28,7 @@ def index(request):
     fcomplete_count = Feature.objects.filter(status='c').count()
     total_feature_count = Feature.objects.all().count()
     
-    return render(request,'index.html',{"queue_count":inqueue_count , "progress_count":inprogrss_count, "complete_count":complete_count ,"bug_total":total_bug_count , "fqueue_count":finqueue_count , "fprogress_count":finprogrss_count, "fcomplete_count":fcomplete_count ,"feauture_total":total_feature_count})
+    return render(request,'index.html',{"queue_count":inqueue_count , "progress_count":inprogrss_count, "complete_count":complete_count ,"bug_total":total_bug_count , "fqueue_count":finqueue_count , "fprogress_count":finprogrss_count, "fcomplete_count":fcomplete_count ,"feature_total":total_feature_count})
   
 @login_required 
 def logout(request):
