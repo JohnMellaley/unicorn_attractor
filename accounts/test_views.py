@@ -1,4 +1,6 @@
 from django.test import TestCase
+from .forms import  UserLoginForm, UserRegistrationForm
+from django.contrib.auth.models import User
 # from .models import Item
 
 
@@ -13,12 +15,29 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/login/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
+        
+    def test_get_logout_page(self):
+        self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
+        self.user.save()
+        self.client.login(username="john10", password="john10")
+        page = self.client.get("/accounts/logout/", follow = True)
+        self.assertEqual(page.status_code, 200)
+        self.assertRedirects(page, '/')
+        self.assertTemplateUsed(page, "index.html")
 
-#   FAILED        
-#    def test_get_profile_page(self):
-#        page = self.client.get("/accounts/profile/")
-#        self.assertEqual(page.status_code, 200)
-#        self.assertTemplateUsed(page, "profile.html")
+    def test_get_profile_page(self):
+        self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
+        self.user.save()
+        self.client.login(username="john10", password="john10")
+        page = self.client.get("/accounts/profile/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "profile.html")
+    
+    def test_statistics_page(self):
+        page = self.client.get("/accounts/statistics/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "dashboard.html")
+	
         
     def test_get_registration_page(self):
         page = self.client.get("/accounts/register/")
@@ -52,16 +71,3 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration/password_reset_complete.html")
 
-#  NOT MY CODE DELETE WHEN FINISJED
-        
-#   def test_get_edit_item_page(self):
-#        item = Item(name="Create a Test")
-#        item.save()  */
-
-#        page = self.client.get("/edit/{0}".format(item.id))
-#        self.assertEqual(page.status_code, 200)
-#        self.assertTemplateUsed(page, "item_form.html")
-    
-#    def test_get_edit_page_for_item_that_does_not_exist(self):
-#        page = self.client.get("/edit/1")
-#       self.assertEqual(page.status_code, 404)

@@ -22,10 +22,17 @@ class TestUserRegistrationForm(TestCase):
         form = UserRegistrationForm({'email':'','username':'johnmellaley','password1':'ballybay','password2':'ballybay'})
         self.assertTrue(form.is_valid())
     
-#    def test_cannot_register_without_password1(self):
-#        form = UserRegistrationForm({'email':'','username':'johnmellaley','password1':'','password2':'ballybay'})
-#        self.assertFalse(form.is_valid())
-#        self.assertEqual(form.errors, [u'please confirm your password"'])
+    def test_UserRegistrationForm_passwprd_not_match(self):
+        form = UserRegistrationForm(
+            data={'email': "", 'username': "u",
+                  'password1': "test", 'password2': "test1"})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors, {'password2': ['Passwords must match']})
+      
+    def test_cannot_register_without_password1(self):
+        form = UserRegistrationForm({'email':'','username':'johnmellaley','password1':'','password2':'ballybay'})
+        self.assertFalse(form.is_valid())
+        self.assertTrue(form.errors) #2 errors This field is required and please confirm your password
 
      
     
