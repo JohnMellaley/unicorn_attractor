@@ -18,7 +18,6 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
         if order_form.is_valid() and payment_form.is_valid():
-            print("hello3")
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
@@ -42,18 +41,19 @@ def checkout(request):
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
                 )
+                if customer.paid:
+                    for id, quantity in cart.items():
+                        feature = Feature.objects.get(id=id)
+                        feature.vote = quantity
+                        feature.save()
+                    messages.success(request, "You have successfully paid")
+                    request.session['cart'] = {}
+                    return redirect(reverse('features'))
+                else:
+                    messages.error(request, "Unable to take payment")
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-            if customer.paid:
-                for id, quantity in cart.items():
-                    feature = Feature.objects.get(id=id)
-                    feature.vote = quantity
-                    feature.save()
-                messages.error(request, "You have successfully paid")
-                request.session['cart'] = {}
-                return redirect(reverse('features'))
-            else:
-                messages.error(request, "Unable to take payment")
+            
         else:
             messages.error(request, "We were unable to take a payment with that card!")
     else:

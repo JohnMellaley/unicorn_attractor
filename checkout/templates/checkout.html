@@ -19,13 +19,14 @@
     <h1>Payment Details</h1>
     <div class="row">
         {% for item in cart_items %}
-        <div class="col-xs-6 col-xs-offset-3 display panel">
+        <div class="col-xs-6 col-xs-offset-3 col-md-4 col-lg-3 display panel">
             <div class="panel-body">
                 <h3 class="panel-heading panel-primary"> Name: <span id= featureName, data={{ item.feature.name }} > {{ item.feature.name }} </span></h3>
                 <p ><strong >ID:</strong> <span id="id"> {{ item.feature.id }} </span></p>
                 <p id="created_date"><strong>Creation date:</strong> {{ item.feature.created_date }}</p>
                 <p><strong>Author:</strong> {{ item.feature.author }}</p>
                 <p><strong>Price:</strong> {{ item.feature.price }}</p>
+                <p><strong>Quantity:</strong> {{ item.quantity }}</p>
                 <p class="product-description"><strong>Description:</strong>{{ item.feature.description|truncatewords:7  }}</p>
             </div>
         </div>
