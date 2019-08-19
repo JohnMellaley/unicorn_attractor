@@ -18,13 +18,13 @@ class TestUserRegistrationForm(TestCase):
         form = UserRegistrationForm({'email':'email@gmail.com','username':'johnmellaley','password1':'ballybay','password2':'ballybay'})
         self.assertTrue(form.is_valid())
         
-    def test_can_register_without_email(self):
+    def test_cannot_register_without_email(self):
         form = UserRegistrationForm({'email':'','username':'johnmellaley','password1':'ballybay','password2':'ballybay'})
-        self.assertTrue(form.is_valid())
+        self.assertFalse(form.is_valid())
     
-    def test_UserRegistrationForm_passwprd_not_match(self):
+    def test_UserRegistrationForm_password_not_match(self):
         form = UserRegistrationForm(
-            data={'email': "", 'username': "u",
+            data={'email': "john@hotmail.com", 'username': "u",
                   'password1': "test", 'password2': "test1"})
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors, {'password2': ['Passwords must match']})

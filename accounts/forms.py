@@ -26,6 +26,8 @@ class UserRegistrationForm(UserCreationForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         # is statement so won't compare blank with exisint blank email
+        if(email == ""):
+            raise forms.ValidationError(u'User must submit an email')
         if (email != ""):
             username = self.cleaned_data.get('username')
             if User.objects.filter(email=email).exclude(username=username):

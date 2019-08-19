@@ -44,7 +44,7 @@ def checkout(request):
                 if customer.paid:
                     for id, quantity in cart.items():
                         feature = Feature.objects.get(id=id)
-                        feature.vote = quantity
+                        feature.vote += quantity
                         feature.save()
                     messages.success(request, "You have successfully paid")
                     request.session['cart'] = {}

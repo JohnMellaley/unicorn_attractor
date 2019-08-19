@@ -90,30 +90,31 @@ def user_profile(request):
     """ this is the users profile page"""
     user = User.objects.get(email=request.user.email)
     name = request.user
-    bugs = Bug.objects.filter(author=name)
-    features = Feature.objects.filter(author=name)
+    bugs = Bug.objects.filter(author=name).order_by('-vote')
+    features = Feature.objects.filter(author=name).order_by('-vote')
     return render(request, "profile.html", {"profile": user , "bugs":bugs , "features":features})
         
 def statistics(request):
 	return render(request, 'dashboard.html')   
 	
 def getdata_bug(self):
-    bugs = Bug.objects.all();
+    bugs = Bug.objects.all()
+    
     c = json.dumps( [{'name': o.name, 'vote':o.id} for o in bugs] )
     return HttpResponse(c, content_type='application/json')
     
 def getdata_feature(self):
-    features = Feature.objects.all();
+    features = Feature.objects.all()
     d = json.dumps( [{'feature_name': o.name, 'feature_vote':o.id} for o in features] )
     return HttpResponse(d, content_type='application/json')
     
 def getdata_bug_user(self):
-    bugs = Bug.objects.all();
+    bugs = Bug.objects.all()
     e = json.dumps( [{'author': o.author.username, 'name': o.name} for o in bugs] )
     return HttpResponse(e, content_type='application/json')
     
 def getdata_feature_user(self):
-    features = Feature.objects.all();
+    features = Feature.objects.all()
     f = json.dumps( [{'author': o.author.username, 'name': o.name} for o in features] )
     return HttpResponse(f, content_type='application/json')
     
