@@ -27,7 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'le-5khuj*o5me^939%%#53^&+homaxa6ig1syb%p+rly-9@c=c'
+#SECRET_KEY = 'le-5khuj*o5me^939%%#53^&+homaxa6ig1syb%p+rly-9@c=c'
+SECRET_KEY= os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
@@ -86,15 +87,18 @@ WSGI_APPLICATION = 'unicorn.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-if development:
+#if development:
+if "DATABASE_URL" in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    
+    
 #DATABASES = {'default': dj_database_url.parse("postgres://umtmkfupwhkhdy:00c069987433977baaf83a1d7fea6eda679fcc28e265fd3e54d4c33bc802de09@ec2-54-75-235-28.eu-west-1.compute.amazonaws.com:5432/d3jmper2tp71gu")}
 
 
