@@ -15,7 +15,6 @@
                     <h3>{{ item.feature.name }}</h3>
                     <p class="product-description">{{ item.feature.description }}</p>
                     <p>{{ item.feature.price }}</p>
-                    
                         
                         <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                             {% csrf_token %}

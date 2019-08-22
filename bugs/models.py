@@ -11,6 +11,7 @@ class Bug(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
     vote = models.IntegerField(default=0)
+    #status can be one of the following
     STATUS = (
         ('q','In Queue'),
         ('p','In Progress'),
@@ -23,6 +24,7 @@ class Bug(models.Model):
     def __str__(self):
         return self.name
         
+#links bugs and users        
 class UserBug(models.Model):
     userid = models.ForeignKey(User, default=None)
     bugid = models.ForeignKey(Bug, default=None)

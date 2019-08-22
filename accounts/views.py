@@ -44,14 +44,14 @@ def login(request):
     # if member is already logged in return to home page
     if request.user.is_authenticated:
         return redirect(reverse('index'))
-    #if form subbmitted the take details
+    #if form submitted then take details
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
-        #if valid form thne check details
+        #if valid form then check details
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
-        #if correct login user and  redirect to home pag
+        #if correct, login user and  redirect to home pag
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in")
@@ -59,19 +59,17 @@ def login(request):
         #else display error message
             else:
                 messages.error(request, "Your username or password is incorrect")
-                #login_form.add_error(None, "Your username or password is incorrect")
     else:
         #if not post them display form
         login_form = UserLoginForm()
     return render(request, 'login.html', {"login_form": login_form})
     
     
-    
 def registration(request):
     """Render the registration page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
-     # if post collect form detials   
+     # if post collect form details   
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
         # if form valid the write to database
@@ -96,36 +94,40 @@ def user_profile(request):
     """ this is the users profile page"""
     user = User.objects.get(email=request.user.email)
     name = request.user
-    #get bugs that user created with the one with the top votes at the top
+    #get bugs that user created with the ones with the top votes at the top
     bugs = Bug.objects.filter(author=name).order_by('-vote')
-    #get features that user created with the one with the top votes at the top
+    #get features that user created with the ones with the top votes at the top
     features = Feature.objects.filter(author=name).order_by('-vote')
     return render(request, "profile.html", {"profile": user , "bugs":bugs , "features":features})
         
 def statistics(request):
 	return render(request, 'dashboard.html')   
-# remaining functions are to get data for graph	
+''' remaining functions are to get data for graph '''
+
+#gets tops 5 bugs by most votes
 def getdata_bug(self):
     bugs = list(Bug.objects.values('name','vote').order_by('-vote')[:5])
     return JsonResponse(bugs, safe=False)
-    
+
+#gets tops 5 features by most votes    
 def getdata_feature(self):
     features = list(Feature.objects.values('name','vote').order_by('-vote')[:5])
     return JsonResponse(features, safe=False)
     
+# gets author of and anme of bugs
 def getdata_bug_user(self):
-    bugs = Bug.objects.values('author')
-    print("testss",bugs.first().username())
+    #bugs = Bug.objects.values('author')
     bugs = Bug.objects.all()
     e = json.dumps( [{'author': o.author.username, 'name': o.name} for o in bugs] )
-    #print(e)
     return HttpResponse(e, content_type='application/json')
-    
+   
+# gets author of and name of features 
 def getdata_feature_user(self):
     features = Feature.objects.all()
     f = json.dumps( [{'author': o.author.username, 'name': o.name} for o in features] )
     return HttpResponse(f, content_type='application/json')
-    
+
+# gets count of all bugs and features 
 def bug_feature_count(self):
     total_bug_count = Bug.objects.all().count()
     total_feature_count = Feature.objects.all().count()

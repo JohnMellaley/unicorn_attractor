@@ -14,6 +14,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
+    #get two forms information
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -21,19 +22,22 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
+        #create instance of cart, empty if none
             cart = request.session.get('cart', {})
             total = 0
+            #check each item in the cart
             for id, quantity in cart.items():
                 feature = get_object_or_404(Feature, pk=id)
+                #calculate total
                 total += quantity * feature.price
+                # set up line details
                 order_line_item = OrderLineItem(
                     order=order,
                     feature=feature,
                     quantity=quantity
                 )
                 order_line_item.save()
-            
+            #try make payment
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
@@ -44,6 +48,7 @@ def checkout(request):
                 if customer.paid:
                     for id, quantity in cart.items():
                         feature = Feature.objects.get(id=id)
+                        #increase vote
                         feature.vote += quantity
                         feature.save()
                     messages.success(request, "You have successfully paid")

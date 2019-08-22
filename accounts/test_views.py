@@ -18,33 +18,42 @@ class TestViews(TestCase):
         self.assertTemplateUsed(page, "login.html")
         
     def test_get_login_page_post(self):
+        #create user
         self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
         self.user.save()
-        self.client.login(username="john10", password="john10")
-        page = self.client.get("/accounts/login/", follow = True)
+        #post details from login page
+        page = self.client.post('/accounts/login/',
+                                {'username': 'john10',
+                                 'password':"john10"},follow=True)
+        # test user goes to home page if detials correct
         self.assertEqual(page.status_code, 200)
-        self.assertRedirects(page, '/')
         self.assertTemplateUsed(page, "index.html")
-        # message = list(page.context.get('messages'))[0]
-        # self.assertEqual(message.tags, "success")
-        # self.assertEqual(message.message, "You have successfully logged in")
+        #check correct message is displayed
+        message = list(page.context.get('messages'))[0]
+        self.assertEqual(message.tags, "success")
+        self.assertEqual(message.message, "You have successfully logged in")
+        
         
     def test_get_login_page_post_incorrect_detials(self):
         self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
         self.user.save()
-        self.client.login(username="john10", password="john")
-        page = self.client.get("/accounts/login/")
+        #post incorrect detials
+        page = self.client.post('/accounts/login/',
+                                {'username': 'john10',
+                                 'password':"john"},follow=True)
+        #check user stays on login page                         
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
-        # message = list(page.context.get('messages'))[0]
-        # self.assertEqual(message.tags, "error")
-        # self.assertEqual(message.message, "Your username or password is incorrect")
-        
+        #check error message
+        message = list(page.context.get('messages'))[0]
+        self.assertEqual(message.tags, "error")
+        self.assertEqual(message.message, "Your username or password is incorrect")
         
     def test_get_logout_page(self):
         self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
         self.user.save()
         self.client.login(username="john10", password="john10")
+        # check page is redirect to index page
         page = self.client.get("/accounts/logout/", follow = True)
         self.assertEqual(page.status_code, 200)
         self.assertRedirects(page, '/')
@@ -77,27 +86,13 @@ class TestViews(TestCase):
                                  'password1': 'paul',
                                  'password2': 'paul'},
                                 follow=True)
+        #check user redirected to home page
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "index.html")
+        #check message is correct
         message = list(page.context.get('messages'))[0]
         self.assertEqual(message.tags, "success")
         self.assertEqual(message.message, "You have sucessfully registered")
-        
-    # def test_registration_with_user_already_regsitered(self):
-    #     # post input to the register url
-    #     client = Client()
-    #     self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
-    #     self.user.save()
-    #     self.client.login(username="john10", password="john10")
-    #     page = self.client.post('/accounts/register/',
-    #                             {'email': 'admin@admin.com',
-    #                              'username': 'john10',
-    #                              'password1': 'john10',
-    #                              'password2': 'john10'})
-        
-        # self.assertEqual(page.status_code, 200)
-        # self.assertTemplateUsed(page, "registration.html")
-       
         
     def test_password_reset_form_page(self):
         page = self.client.get("/accounts/password-reset/")
@@ -108,19 +103,6 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/password-reset/done/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration/password_reset_done.html")
-        
-      
-    # def test_password_reset_email_page(self):
-    #     page = self.client.get("/accounts/register/")
-    #     self.assertEqual(page.status_code, 200)
-    #     self.assertTemplateUsed(page, "registration/password_reset_email.html")
-        
-    # def test_password_reset_confirm_page(self):
-    #     token = response.context[0]['token']
-    #     uid = response.context[0]['uid']
-    #     page = self.client.get("/accounts/password-reset/, kwargs={'token':token,'uidb64':uid})")
-    #     self.assertEqual(page.status_code, 200)
-    #     self.assertTemplateUsed(page, "registration/password_reset_confirm.html")
         
     def test_password_reset_complete_page(self):
         page = self.client.get("/accounts/password-reset/complete/")

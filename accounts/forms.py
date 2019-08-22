@@ -30,6 +30,7 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(u'User must submit an email')
         if (email != ""):
             username = self.cleaned_data.get('username')
+            #check email is not already in the database
             if User.objects.filter(email=email).exclude(username=username):
                 raise forms.ValidationError(u'Email must be unique')
         return email
@@ -37,10 +38,10 @@ class UserRegistrationForm(UserCreationForm):
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
-            
+        # validate both passwird are entered   
         if not password1 or not password2:
             raise ValidationError("please confirm your password")
-            
+        #validate password must match   
         if password1 != password2:
             raise ValidationError("Passwords must match")
             

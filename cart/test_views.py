@@ -14,10 +14,10 @@ class TestViews(TestCase):
         self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
         self.user.save()
         self.client.login(username="john10", password="john10")
-        
+        #create feature
         item = Feature(name="Create a Test featture",description="test description",  price=30.00, author=self.user)
         item.save()
-                
+        #add detials to cart        
         response = self.client.post("/cart/add/{0}".format(item.id),{
                 'quantity':2,
                 'author':self.user
@@ -28,14 +28,15 @@ class TestViews(TestCase):
         self.assertEqual(response.url, '/features/')
         
     def test_adjust_cart(self):
+        #create user and login
         client = Client()
         self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
         self.user.save()
         self.client.login(username="john10", password="john10")
-        
+        #create feature
         item = Feature(name="Create a Test featture",description="test description",  price=30.00, author=self.user)
         item.save()
-        
+        #adjust cart
         response = self.client.post("/cart/adjust/{0}".format(item.id),{
                 'quantity':2,
                 'author':self.user
