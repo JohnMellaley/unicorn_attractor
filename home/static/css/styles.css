@@ -1,4 +1,4 @@
-html {
+/*html {
   height: 100%;
 }
 
@@ -75,8 +75,6 @@ body {
     display:inline;
 }
 
-
-/*main image on background */
 .hero-image{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('/static/img/400dpiLogo.png');
     background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/400dpiLogo.png');
@@ -91,7 +89,7 @@ body {
     -o-background-size:  contain;
     -ms-background-size: contain;
     background-position: center;
-    min-height: 200px; /*added so would display on IE */
+    min-height: 200px; added so would display on IE 
     height: 100%;
     position: relative; 
 }
@@ -196,4 +194,4 @@ form {
 
 h1 {
     color:blue;
-}
+}*/

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block content %}
+{% block page_title %}View Bug Page{% endblock %}
+{% block head_js %}
 <script>
    
 $(document).on("click", "#likesButton", function(){
@@ -29,7 +29,11 @@ $(document).on("click", "#likesButton", function(){
    
 
 </script>
+{% endblock head_js %}
+{% block content %}
+
 <div class="container">
+    <h1>View Bug</h1>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 display panel">
             <div class="panel-body">

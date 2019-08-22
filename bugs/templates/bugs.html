@@ -1,31 +1,10 @@
 {% extends 'base.html' %}
+{% block page_title %}Bugs Page{% endblock %}
+{% block head_js %}
 
+{% endblock head_js %}
 {% block content %}
-<script>
-   
-$(document).on("click", "#likesButton", function(){
-    var token = '{{csrf_token}}';
-    alert("test");
-    var name = document.getElementById("id");
-    var bugName = name.firstChild.nodeValue;
-    console.log(bugName);
-        $.ajax({
-            type: 'GET',
-            url: "{% url 'likes' %}"
-          })
-          .done(function(data) {
-              if(data.success) {
-                  $("#likesButton").fadeOut(100).fadeIn(100);
-                  alert(data.success);
-              } else 
-              { 
-                alert("fail");
-              }
-          });
-});
-   
 
-</script>
 <div class="row row-flex">
     
     <div class="container">

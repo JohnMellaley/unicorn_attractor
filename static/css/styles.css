@@ -10,12 +10,26 @@ body {
     min-height: 100%;
 }
 
+/*navbar on large screen*/
 .navbar-fixed-top{
     padding:0;
     margin-bottom: 50px;
     background-color:#21283f;
 }
 
+/*   nabar for smaller screens */
+.navbar-dropdown span:hover{
+    color:#337ab7;
+}
+
+/*display menu when hover over hambuger icon on small screens*/
+.navbar-dropdown:hover .menu-dropdown{
+    display: block;
+    padding-right:10px;
+    padding-left:20px;
+    line-height:1.5;
+}
+/* for drop down menu. only display on smaller screen */
 .menu-dropdown {
     background-color: black;
     position: absolute;
@@ -23,27 +37,16 @@ body {
     z-index: 1;
 }
 
-.navbar-dropdown span:hover{
-    color:blue;
-}
-
-.navbar-dropdown:hover .menu-dropdown{
-    display: block;
-    padding-right:10px;
-    padding-left:20px;
-    line-height:1.5;
-}
-
 .menu-dropdown li{
     display: inline-block;
 }
-
 
 .menu-dropdown a:hover{
     color: white;
 }
 
-
+/* footer information */
+/*keep at bottom of page*/
 .bg-footer{
   position: absolute;
   right: 0;
@@ -52,6 +55,7 @@ body {
   padding: 1rem;
 }
 
+/*icon links with footer */
 .copyright{
     color:#337ab7;
 }
@@ -96,7 +100,7 @@ body {
     height: 100%;
     position: relative; 
 }
-
+/* display better in bigger screen with extra padding at the top and image picture with greater height*/
 @media screen and (min-width: 768px) {
    body{
         padding-top: 50px; 
@@ -114,8 +118,21 @@ body {
             min-height: 400px;
     }
 }
+
+/*heading on each page*/
+h1 {
+    color:#337ab7;
+}
+
+/*home page heading */
 .indexheading{
     text-decoration: underline;
+}
+
+/* home page stats table*/
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 .icon-bar {
     background-color: #fff;
@@ -125,6 +142,7 @@ body {
     padding-top: 20px;
 }
 
+/*likes badge */
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -134,6 +152,7 @@ body {
     background-color:#337ab7;
 }
 
+/*panels */
 .panel-heading{
     text-transform: capitalize;
     width: 100%;
@@ -143,14 +162,15 @@ body {
     color: white;
 }
 
+.panel-body {
+    height: 100%;
+    border: 1px;
+    box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+}
+
 
 caption p {
     word-wrap: break-word;
-}
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
 }
 
 .instructions{
@@ -158,26 +178,21 @@ table, th, td {
     border: solid;
     padding: 5px;
 }
+/*alliging panels */
 .row.row-flex {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
 }
-
-.panel-body {
-    height: 100%;
-    border: 1px;
-    box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
-}
-
+/*feature description*/
 .feature-description {
     min-height: 40px;
 }
-
+/*add comment link*/
 .comment {
     font-size: larger;
 }
-
+/*posts*/
 .post_block{
     border: 1px;
     padding: 10px;
@@ -185,16 +200,13 @@ table, th, td {
     box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
     
 }
-
 .content_heading{
     margin-right: 100px;
     border-bottom-style:solid;
 }
 
+/* all forms */
 form {
     width: 100%;
 }
 
-h1 {
-    color:blue;
-}

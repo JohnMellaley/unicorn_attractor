@@ -9,6 +9,7 @@ d3.queue()
    
 function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphData5){
     var ndx = crossfilter(graphData); 
+    console.log(graphData);
     var vote_dim = ndx.dimension(dc.pluck('name'));
     var votes_per_bug = vote_dim.group().reduceSum(dc.pluck('vote'));
     dc.barChart('#chart_user_likes')
@@ -25,8 +26,9 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
              .yAxis().ticks(4);
     
     var ndx = crossfilter(graphData2); 
-    var feature_dim = ndx.dimension(dc.pluck('feature_name'));
-    var votes_per_feature = feature_dim.group().reduceSum(dc.pluck('feature_vote'));
+    console.log(graphData2);
+    var feature_dim = ndx.dimension(dc.pluck('name'));
+    var votes_per_feature = feature_dim.group().reduceSum(dc.pluck('vote'));
     
     dc.barChart('#chart_user_likes2')
              .width(600)
@@ -85,6 +87,6 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
                 .dimension(bug_feature_dim)
                 .group(count_bug_feature_dim);
                 
-    dc.renderAll()
+    dc.renderAll();
    
 } 

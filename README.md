@@ -1,5 +1,5 @@
 #Project 4
-ghghg
+
 [![Build Status](https://travis-ci.org/JohnMellaley/unicorn_attractor.svg?branch=master)](https://travis-ci.org/JohnMellaley/unicorn_attractor)
 
 # Unicorn_attractor
@@ -15,30 +15,30 @@ be worked on first. The company will split its time between working on features 
 ## UX
 
 ### What is this website for?
-This website was created to create revenue through adding extra features, and also help to identify bugs on our existing software and
+This website was created to create revenue through adding extra features, and help to identify bugs on our existing software and
 and allows us to prioritise the bugs causing the most issues with our customers.
-The benfit for the customer is they also get a better product due to reduced bugs in the software, but can also get extra 
+The benefit for the customer is they also get a better product due to reduced bugs in the software, but can also get extra 
 features added.
 
 ### User Stores
-This site is used by anyone using our sofware products. The users will be able to vote on features and bugs to fixed.
+This site is used by anyone using our software products. The users will be able to vote on features and bugs to fixed.
 
 **Existing and New Users. **
 
 * Users should be able to see what the company does from the home page.
 * Users should be able to some metrics before deciding they want to join
 * Users should be to register with the company if they choose to join.
-* User should be able to reset there password if they have forgoten it.
-* Users should be add bugs
+* User should be able to reset their password if they have forgotten it.
+* Users should be able add bugs
 * Users should be able to vote for each bug once.
 * Users should be able to comment on all bugs raised. 
-* Users should be add features
+* Users should be able add features
 * Users should be able to vote for each feature as many times as they like.
 * Users should be able to add features to a shopping cart.
 * Users should be able to amend the shopping cart.
 * Users should be able to checkout the shopping cart and pay for the votes by the credit/debit card
 * Users should be able to comment on all feature raised. 
-* Users should be able to see comments from out users or company employees as well
+* Users should be able to see comments from other users or company employees as well
 * Users should have their own profile page with their own bugs and features displayed if any along with some basic personal information.
 * Users should be able to dashboard with some site metrices.
 
@@ -61,12 +61,12 @@ within the project.
     
 * Reset Password
     - Password Reset Form with email
-    - Email sent with link to reset users password.
+    - Email sent with link to reset user's password.
     - Page that allows you change your password.
     - Message to tell you to log in when complete
 
 * Home page
-    -  The home page has inforation about the company. Who we are and what we do as well as a two tables with some statistics for both Features and bugs
+    -  The home page has information about the company, who we are and what we do as well as a two tables with some statistics for both Features and bugs
 
 * Statistics
     - This page contains 5 graphs. 
@@ -80,10 +80,10 @@ within the project.
     - This page has all the Bugs and features you have created as well as your name and e-mail address at the top.
 
 * Bugs Page
-    - Displays all bugs created on one page with all there detials and status.
+    - Displays all bugs created on one page with all their details and status.
 
 * Add Bug Page
-    - This page allows you create you own Bug
+    - This page allows user create to a Bug
 
 * View Bug Page
     - Displays bug details on one page.
@@ -93,11 +93,11 @@ within the project.
     - Allow a user to add a comment about the Bug.
 
 * Features Page
-    - Displays all Features created on one page with all there detials and status.
+    - Displays all Features created on one page with all there details and status.
     - For each feature on the page you can add as many votes as you like to the shopping cart
 
 * Add Feature Page
-    - This page allows you create you own Feature
+    - This page allows the user to create their own Feature
 
 * View Feature Page
     - Displays feature details on one page.
@@ -110,8 +110,8 @@ within the project.
     - Allow user to checkout cart for payment
 
 * Payment Details Page
-    - Allow user to enter their payment detials.
-    - Once payment submitted bring back to Features page with each feature having its upvote details increase were you purchased an upvote.
+    - Allow user to enter their payment details.
+    - Once payment submitted bring back to Features page with each feature having its upvote details increase where you purchased an upvote.
 
 * Logout
     - This page allows the user to logout and directs user back to the index page
@@ -138,7 +138,7 @@ within the project.
 - [Heroku] (https://heroku.com/)
     - We use **Heroku** a web-based hosting service.
 - [Stripe] (https://stripe.com)
-    - We use **Stripe** for recieving on-line payments
+    - We use **Stripe** for receiving on-line payments
 - [Coverage] (https://coverage.readthedocs.io/en/v4.5.x/)
     - We use **Coverage** to measure how much of the code has been tested
 - [gunicorn] (https://gunicorn.org/)
@@ -148,9 +148,9 @@ within the project.
 - [django forms bootstrap] (https://django-bootstrap-form.readthedocs.io/en/latest/)
     - We use **django forms bootstrap** for styling forms
 - [gmail] (https://www.google.com/intl/en-GB/gmail/about/#/)
-    - We use **gmail** used for semd e-mails to reset passworda
+    - We use **gmail** used for sending e-mails to reset passwords
 - [d3] (https://d3js.org/)
-    - We use **D3** as a datebase for storing users and recipes
+    - We use **D3** as a database for storing users and recipes
 - [dc.js] (https://dc-js.github.io/dc.js/)
     - We use **DC** for creating reactive charts
 - [crossfilter] (https://mlab.com/welcome/)
@@ -164,82 +164,82 @@ within the project.
    - **Login** Brings user Login Page
    - **Register** Brings user to Register page
    - **Statistics** Brings user to Statistics page
-   - **Reset Passord** Brings user to reset password page page
-   - **Email Reset Passord** Brings user to  password reset page
+   - **Reset Password** Brings user to reset password page
+   - **Email Reset Password** Brings user to password reset page
    - **Logout** Logs out user and bring to home page
    - **Profile** Brings user to their profile page
    - **Bugs** Bring user to bugs page
    - **Features** Bring user to Features page
    - **Comments** Bring user to add comment page (Both Bugs and Features)
-   - **Views** Bring user to View page(Both Bugs and Features)
+   - **Views** Bring user to View page (Both Bugs and Features)
    - **Cart** Bring user to Cart Page
-   - **Social Media**  All link to home pages of site
+   - **Social Media** All link to home pages of site
 
-- Register Modal
+- Register Page
     - If password not the same, error message display.
-    - If User name already in Database then error message is displayed
+    - If Username already in Database then error message is displayed
     - if no e-mail provided then an error message is displayed
     - If everything okay user moved home page.
 
 - Login form
-    - if Password or user name incorrect, error message displayed
-    - Can login with user name or email
+    - if Password or username incorrect, error message displayed
+    - Can login with username or email
     - If everything okay then page directed to home page
 
 - Reset Password
-  - Reset password functionality works once correct e-amil is provided
+  - Reset password functionality works once correct e-mail is provided
 
 - Profile page
-  - name email are displayed at the top of the page
-  - All Bugs and features created by the the user’s are display here and order from most likes down.
+  - name email is displayed at the top of the page
+  - All Bugs and features created by the user’s are display here in order from most likes down.
   - Can access view page for Feature and Bug
       
 - Bugs page.
   - All Bugs displayed here correctly in order from most liked down
-  - Can acces Bugview page here
+  - Can access Bug view page here
       
 - Bug view page
   - All Bugs displayed here correctly in order from most liked down
   - Add comment link works
-  - Add comment will display error messgage if no Title or Content is left blank
+  - Add comment will display error message if Title or Content is left blank
   - Comment will be added if everything is okay
-  - Upvote button works okay. Upvotes will ne increaed by one if everything is okay
+  - Upvote button works okay. Upvotes will be increased by one if everything is okay
   - Upvote will display error if you created this bug or already voted for this bug
   
 - Add Bug Page.
   - Once Name description are added but will be added
   - Error displayed if no name or descripton
 
-- Features Pagw
+- Features Page
   - All Featuress displayed here correctly in order from most liked down.
   - Add comment link works
-  - Add comment will display error messgage if no Title or Content is left blank
+  - Add comment will display error message if no Title or Content is left blank
   - Comment will be added if everything is okay
   - Add button will add votes to shopping cart
   - Quantity must be filled in or will get an error
   
 - Add Feature Page.
-  - Once Name description are added but will be added
-  - Error displayed if no name or descripton
+  - Once Name description is added but will be added
+  - Error displayed if no name or description
 
 - Cart
-  - Cart icon brings you to checkout page
+  - Cart icon brings user to checkout page
   - Features in shopping cart are displayed okay
   - Amend button amends shopping cart to change specified 
   - Amend value Must be an integer value
-  - Total updates when quntity of upvotes is adjusted
-  - Checkout Button brings you to payment page
+  - Total updates when quantity of upvotes is adjusted
+  - Checkout Button brings user to payment page
     
 - Payment Page
-  - for each selected feature for purchase selected each Feature has its detials and quantity displayed correctly for each selcted
+  - Each selected feature for purchase has its details and quantity displayed correctly.
   - total purchase price displayed
   - payment form displayed correctly
   - Error message is displayed if required field is not entered
   - Validation done on phone number is provided, expected correct format
   - Invalid card will be declined
-  - Expiry date error will diplay if month and year ealier then this month and this year
+  - Expiry date error will display if month and year are earlier then this month and this year
   - Error message displayed if not correct payment information.
-  - if details okay redirected to features page with message confirming payment and the upvotes indicator increased based not the number of vote purchased
+  - if details okay then page is redirected to features page with message confirming payment and the upvotes indicator increased based no the number of votes purchased
   
 - Statistics
       - All charts display as expected
@@ -253,6 +253,15 @@ within the project.
   - Opera   displays okay
   - Internet explorer displays okay
 
+### HTML Validation
+    - I validated all of my HTML pages using the W3 Html Validator.
+
+### CSS Validation
+    - I validated my CSS file with the W3 CSS validator
+
+### JavaScript Validation
+    - I validated my JavaScript files with JShint.
+
 ### Automatic testing
   - For all apps I created unit tests for Models, forms and views.
   - Break down of coverage per app
@@ -262,7 +271,7 @@ within the project.
     - checkout 97%
     - features 98%
     - home 47%
-  - For intergration testing I used Travis CI which builds and tests my app everytime I commit changed to GithUB
+  - For integration testing I used Travis CI which builds and tests my app every time I commit changed to GitHub
 
 ### Site has been tested on mobile, tablet and laptop devices as well as testing on chrome for the different sizes.
 
@@ -279,7 +288,7 @@ within the project.
   - Same on all screens
 
 ### Statistics Page
-  - on large and medium screens, bar charts desplay two in a row and on smaller screen on op of each other
+  - on large and medium screens, bar charts will be displayed at two in a row and on smaller screens on top of each other
 
 ### Navbar: 
 - On medium to large screens the nav-items are display on the left-hand side of the navbar. On Small screens these items are displayed under
@@ -291,7 +300,7 @@ within the project.
 - Recipes on small screens are displayed 1 per row
 
 ### Bugs page
-- Buga on large screen are displayed 3 per row
+- Bugs on large screen are displayed 3 per row
 - Bugs on medium screens are displayed 2 per row
 - Bugs on small screens are displayed 1 per row
 
@@ -329,8 +338,11 @@ within the project.
 # Deployment
 Set web up in Github
 This web site is deployed on the Heroku platform.
-https://recipe-book-jm.herokuapp.com/
-- Set up app in Herouk. Choose name and set  region to Europe
+https:///
+- Set up app in Heroku. Choose name and set region to Europe
+- Added on the Heroku Postgress Database
+- Installed package dj-database-url to allow connection to a database url
+- Installed package psycopg2 for connecting to postgress databases
 - Set git repository Heroku
   - git init
   - git add .
@@ -348,7 +360,6 @@ https://recipe-book-jm.herokuapp.com/
 
 Then in Heroku under deploy tab you can connect to GitHub using the name you set uo in gitHUb
 
-The database is stored using MLAb
 
 # Credits
 
