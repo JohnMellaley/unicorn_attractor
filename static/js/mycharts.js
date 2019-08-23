@@ -26,7 +26,6 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
              .yAxis().ticks(4);
     
     var ndx = crossfilter(graphData2); 
-    console.log(graphData2);
     var feature_dim = ndx.dimension(dc.pluck('name'));
     var votes_per_feature = feature_dim.group().reduceSum(dc.pluck('vote'));
     
@@ -44,9 +43,9 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
              .yAxis().ticks(4);        
     
     var ndx = crossfilter(graphData3); 
-    var user_bug_dim = ndx.dimension(dc.pluck('author'));
-    var count_user_bug_dim = user_bug_dim.group().reduceCount(dc.pluck('name'));
-    
+    console.log("test",graphData3);
+    var user_bug_dim = ndx.dimension(dc.pluck('author__username'));
+    var count_user_bug_dim = user_bug_dim.group().reduceSum(dc.pluck('count'));
     dc.barChart('#chart_user_bug')
              .width(600)
              .height(400)
@@ -61,8 +60,8 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
              .yAxis().ticks(4);  
              
     var ndx = crossfilter(graphData4); 
-    var user_feature_dim = ndx.dimension(dc.pluck('author'));
-    var count_user_feature_dim = user_feature_dim.group().reduceCount(dc.pluck('name'));
+    var user_feature_dim = ndx.dimension(dc.pluck('author__username'));
+    var count_user_feature_dim = user_feature_dim.group().reduceSum(dc.pluck('count'));
     
     dc.barChart('#chart_user_feature')
              .width(600)

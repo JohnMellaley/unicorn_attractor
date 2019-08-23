@@ -29,12 +29,13 @@ class TestViews(TestCase):
         
         item = Feature(name="Create a Test feature",description="test description",  price=30.00, author=self.user)
         item.save()
-        
+        #creat shopping cart
         self.client.post("/cart/add/{0}".format(item.id),
                          data={'quantity': '6','author':self.user},
                          follow=True)
                          
         # assign the stripe publishable key to stripe_id
+        #tok_visa got from stripe website used for testing
         stripe_id = 'tok_visa'
         
         page = self.client.post("/checkout/",
@@ -75,6 +76,7 @@ class TestViews(TestCase):
                          follow=True)
                          
         # assign the stripe publishable key to stripe_id
+        #tok_chargeDeclined is from stripe website, will give a card declined error
         stripe_id = 'tok_chargeDeclined'
         
         page = self.client.post("/checkout/",
@@ -96,6 +98,7 @@ class TestViews(TestCase):
         #check after post, that redirect was call '302'
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "checkout.html")
+        #check error message
         message = list(page.context.get('messages'))[0]
         self.assertEqual(message.tags, "error")
         self.assertEqual(message.message, "Your card was declined!")

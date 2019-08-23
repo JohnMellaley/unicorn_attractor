@@ -270,7 +270,6 @@ within the project.
     - cart 94%
     - checkout 97%
     - features 98%
-    - home 47%
   - For integration testing I used Travis CI which builds and tests my app every time I commit changed to GitHub
 
 ### Site has been tested on mobile, tablet and laptop devices as well as testing on chrome for the different sizes.

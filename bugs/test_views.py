@@ -12,10 +12,13 @@ class TestBugViews(TestCase):
                 self.assertTemplateUsed(page, "bugs.html")
 
         def test_viewbug_page(self):
+                #create user
                 self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
                 self.user.save()
+                #create bug
                 bug = Bug(name="Create a Test bug",description="test description",  author=self.user)
                 bug.save()
+                #go to bug page with bugid
                 page = self.client.get("/bugs/viewbug/{0}".format(bug.id))
                 self.assertEqual(page.status_code, 200)
                 self.assertTemplateUsed(page, "viewbug.html")
@@ -25,12 +28,13 @@ class TestBugViews(TestCase):
                 self.assertEqual(page.status_code, 200)
                 self.assertTemplateUsed(page, "bug_form.html")
                 
-        def test_create_a_bug_post(self):   
+        def test_create_a_bug_post(self): 
+                #create us and login
                 client = Client()
                 self.user = User.objects.create_user('john10', 'admin@admin.com', 'john10')
                 self.user.save()
                 self.client.login(username="john10", password="john10")
-                
+                #post bug details
                 response = self.client.post("/bugs/add",{
                         'name':'bug',
                         'description':'desc',

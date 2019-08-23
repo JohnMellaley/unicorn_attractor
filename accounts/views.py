@@ -114,18 +114,17 @@ def getdata_feature(self):
     features = list(Feature.objects.values('name','vote').order_by('-vote')[:5])
     return JsonResponse(features, safe=False)
     
-# gets author of and anme of bugs
+# gets top 5 author and count of bugs they created
 def getdata_bug_user(self):
-    #bugs = Bug.objects.values('author')
-    bugs = Bug.objects.all()
-    e = json.dumps( [{'author': o.author.username, 'name': o.name} for o in bugs] )
-    return HttpResponse(e, content_type='application/json')
-   
-# gets author of and name of features 
+    bugs = list(Bug.objects.values('author__username').annotate(count=Count('author')).order_by('-count')[:5])
+    print(bugs)
+    return JsonResponse(bugs, safe=False)
+
+# gets top 5 authorand count if features they created
 def getdata_feature_user(self):
-    features = Feature.objects.all()
-    f = json.dumps( [{'author': o.author.username, 'name': o.name} for o in features] )
-    return HttpResponse(f, content_type='application/json')
+    features = list(Feature.objects.values('author__username').annotate(count=Count('author')).order_by('-count')[:5])
+    return JsonResponse(features, safe=False)
+    
 
 # gets count of all bugs and features 
 def bug_feature_count(self):

@@ -20,7 +20,7 @@ class TestViews(TestCase):
                 self.assertEqual(page.status_code, 200)
                 self.assertTemplateUsed(page, "viewfeature.html")
                 
-        def test_create_a_featurepage_get(self):
+        def test_create_a_feature_page_get(self):
                 page = self.client.get("/features/create_feature")
                 self.assertEqual(page.status_code, 200)
                 self.assertTemplateUsed(page, "feature_form.html")
