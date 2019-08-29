@@ -7,21 +7,21 @@
 
 <div class="container">
     <div class="text-center">
-        <h1>{{ user }}'s Profile. </h1>
+        <h1>Welcome {{ user }} </h1>
         <h3>Email: {{ profile.email }}</h3>
+    {% if loop.index == 1 %}
         <h3>Here is a list of your bugs</h3>
     </div>
+    {% endif %}
     <div class="row">
     {% for bug in bugs %}
    
                 <div class="col-xs-12 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
                     
                     <div class="panel-body">
-                        <h3 class="panel-heading panel-primary"> Name: <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
-                        <h2 class="panel-title "> <strong>Status :</strong> {{ bug.get_status_display }}</h2><br>
+                        <h3 class="panel-heading panel-primary"> <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
+                        <h2 class="panel-title "> <strong>Status : {{ bug.get_status_display }}</strong></h2><br>
                         <p id="id"><strong>ID:</strong> {{ bug.id }}</p>
-                        <p id="created_date"><strong>Creation date:</strong> {{ bug.created_date }}</p>
-                        <p><strong>Author:</strong> {{ bug.author }}</p>
                         <p class="product-description"><strong>Description:</strong>{{ bug.description|truncatewords:7  }}</p>
                         <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></p><br>
                         
@@ -30,25 +30,33 @@
                     </div>
                 </div>
    
+    {% empty %}
+      <div class="profiletext">
+          <p>You have added no bugs yet. To do so go to Bugs Page and click the 'Add a bug' button</p>
+      </div>
     {% endfor %}
      </div>
     <div class="row">
+    {% if loop.index == 1 %}
     <h3 class="text-center">Here is a list of your features</h3>
+    {% endif %}
     {% for feature in features %}
         <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
             <div class="panel-body">
-                <h3 class="panel-heading panel-primary">Name: <span data={{ feature.name }}> {{ feature.name }}</span></h3>
-                <h5 class="panel-title"><strong>Status:</strong>{{ feature.get_status_display }}</h5><br>
+                <h3 class="panel-heading panel-primary"><span data={{ feature.name }}> {{ feature.name }}</span></h3>
+                <h5 class="panel-title"><strong>Status:{{ feature.get_status_display }}</strong></h5><br>
                 <p><strong>Feature ID:</strong> {{ feature.id }}</p>
-                <p id="created_date"><strong>Creation date:</strong> {{ feature.created_date }}</p>
                 <p class="feature-description"><strong>Description:</strong>{{ feature.description|truncatewords:7 }}</p>
                 <p><strong>Price:</strong> {{ feature.price }}</p>
-                <p><strong>Author:</strong>{{ feature.author }}</p>
                 <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ feature.vote }}</span></p>
                 <br>
                 <a class="btn btn-primary" role="button" href="{% url 'viewfeature' feature.id %}">view for {{ feature.id }}</a>
             </div>
         </div>
+    {% empty %}
+      <div class="profiletext">
+          <p>You have added no Features yet. To do so go to Features Page and click the 'Add a feature' button</p>
+      </div>
     {% endfor %}
     </div>
 </div>

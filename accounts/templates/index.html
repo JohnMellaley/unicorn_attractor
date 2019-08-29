@@ -4,17 +4,21 @@
 <div class="hero-image"></div>
 <div class="container">
     <div class="row">
-        <div class="about col-md-12">
+        <div class="about col-xs-12 col-md-offset-1 col-md-10">
             <h3 class="indexheading text-primary">What we do:</h3>
-            <p>Unicorn Attractor is a leading software development company that allows registered users to request bug fix’s
-            and feature updates.</p>
+            <div class="indexcontent">
+                <p>Unicorn Attractor is a leading software development company that allows registered users to request bug fix’s
+                and feature updates.</p>
+            </div>
             <h3 class="indexheading text-primary">How we do it:</h3>
-            <p>Bug fix's which will be done for free, priority giving to the bug with the most upvotes. Users can also request 
-            new features which again priority will give to the feature with the most upvotes only in this case each up 
-            upvote will have a set cost.</p>
-            <p>Bugs you can only vote for each bug one, but for features you can vote as much as you like if you willing to
-            paythe cost.</p>
-            <p>Developers time will be split 50% of the time between fixing Bugs and features.</p>
+            <div class="indexcontent">
+                <p>Bug fix's which will be done for free, priority giving to the bug with the most upvotes. Users can also request 
+                new features which again priority will give to the feature with the most upvotes only in this case each up 
+                upvote will have a set cost.</p>
+                <p>Bugs you can only vote for each bug one, but for features you can vote as much as you like if you willing to
+                paythe cost.</p>
+                <p>Developers time will be split 50% of the time between fixing Bugs and features.</p>
+            </div>
         </div>
     </div>
         
@@ -30,7 +34,7 @@
                         <td>{{ queue_count }}</td>
                     </tr>
                     <tr>
-                        <th>In Prgress</th>
+                        <th>In Progress</th>
                         <td>{{ progress_count }}</td>
                     </tr>
                     <tr>
@@ -56,7 +60,7 @@
                         <td>{{ fqueue_count }}</td>
                     </tr>
                     <tr>
-                        <th>In Prgress</th>
+                        <th>In Progress</th>
                         <td>{{ fprogress_count }}</td>
                     </tr>
                     <tr>

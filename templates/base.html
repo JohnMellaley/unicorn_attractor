@@ -65,14 +65,16 @@
                     <li><a href="{% url 'bugs' %}">Bugs</a></li>
                     <li><a href="{% url 'features' %}">Features</a></li>
                     <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                    <li>
-                        <a href="{% url 'view_cart' %}">
-                            <i class="fa fa-shipping-cart"></i>Cart
-                            {% if feature_count > 0 %}
+                    {% if feature_count > 0 %}
+                        <li>
+                        
+                            <a href="{% url 'view_cart' %}">
+                                <i class="fa fa-shipping-cart"></i>Cart
                                 <label class="badge badge-warning">{{ feature_count }}</label>
-                            {% endif %}
-                        </a>
-                    </li>
+                            </a>
+                         
+                        </li>
+                    {% endif %}
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}  
                     <li><a href="{% url 'index' %}">Home</a></li>
@@ -88,11 +90,11 @@
      
     
     {% if messages %}
-    <div>
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    </div>
+        <div class="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
     {% endif %}
     {% block content %} {% endblock %}
     <br>

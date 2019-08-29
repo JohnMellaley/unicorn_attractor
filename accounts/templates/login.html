@@ -8,13 +8,17 @@
      
     <div class="container">
      <h1>Login</h1>
+     <div class="form-style">
         <form method ="POST">
             {% csrf_token %}
             {{ login_form | as_bootstrap}}
-            <button type="submit" class="btn btn-default">Submit</button>
+            <div class="button_style">
+                <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
         </form>
-        
-        <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+    </div>
+        <div class="button_style">
+            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
         </div>       
 
     {% endblock %}

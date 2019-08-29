@@ -36,14 +36,14 @@ $(document).on("click", "#likesButton", function(){
     <h1>View Bug</h1>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 display panel">
-            <div class="panel-body">
-                <h3 class="panel-heading panel-primary"> Name: <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
+            <div class="panel-body text-center">
+                <h3 class="panel-heading panel-primary"> <span id= bugName, data={{ bug.name }} > {{ bug.name }} </span></h3>
                 <h2 class="panel-title "> <strong>Status :</strong> {{ bug.get_status_display }}</h2><br>
                 <p ><strong >ID:</strong> <span id="id"> {{ bug.id }} </span></p>
                 <p id="created_date"><strong>Creation date:</strong> {{ bug.created_date }}</p>
                 <p><strong>Author:</strong> {{ bug.author }}</p>
                 <p class="product-description"><strong>Description:</strong>{{ bug.description|truncatewords:7  }}</p>
-                <button id="likesButton" class="badge badge-primary"> <span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></button> Click to Upvote<br>
+                <button id="likesButton" class="badge badge-primary"> <span class="glyphicon glyphicon-star" aria-hidden="true">{{ bug.vote }}</span></button> <br>
             </div>
         </div>
     </div>

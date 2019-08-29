@@ -84,7 +84,8 @@ function makeGraphs(error, graphData, graphData2, graphData3, graphData4, graphD
                 .radius(300)
                 .transitionDuration(1500)
                 .dimension(bug_feature_dim)
-                .group(count_bug_feature_dim);
+                .group(count_bug_feature_dim)
+                ;
                 
     dc.renderAll();
    

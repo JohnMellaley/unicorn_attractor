@@ -11,16 +11,13 @@
     <br>
         {% for feature in features %}
             <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
-                <div class="panel-body">
-                    <h3 class="panel-heading panel-primary">Name: <span data={{ feature.name }}> {{ feature.name }}</span></h3>
+                <div class="panel-body text-center">
+                    <h3 class="panel-heading panel-primary"><span data={{ feature.name }}> {{ feature.name }}</span></h3>
                     <h5 class="panel-title"><strong>Status:</strong>{{ feature.get_status_display }}</h5><br>
                     <p><strong>Feature ID:</strong> {{ feature.id }}</p>
-                    <p id="created_date"><strong>Creation date:</strong> {{ feature.created_date }}</p>
                     <p class="feature-description"><strong>Description:</strong>{{ feature.description|truncatewords:7 }}</p>
                     <p><strong>Price:</strong> {{ feature.price }}</p>
-                    <p><strong>Author:</strong>{{ feature.author }}</p>
                     <p class="badge badge-primary"><span class="glyphicon glyphicon-star" aria-hidden="true">{{ feature.vote }}</span></p>
-                    <br>
                     <form method="post" action="{% url 'add_to_cart' feature.id %}">
                         {% csrf_token %}
                         <div class="input-group">

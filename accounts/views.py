@@ -41,9 +41,9 @@ def logout(request):
     
 def login(request):
     """return a login page"""
-    # if member is already logged in return to home page
+    # if member is already logged in return to profile page
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('profile'))
     #if form submitted then take details
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
@@ -55,7 +55,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
         #else display error message
             else:
                 messages.error(request, "Your username or password is incorrect")
@@ -68,7 +68,7 @@ def login(request):
 def registration(request):
     """Render the registration page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('profile'))
      # if post collect form details   
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
@@ -82,7 +82,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request,"You have sucessfully registered")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
             else:
                 messages.error(request, "Unable to register your account at this time")
     else:            
@@ -117,7 +117,6 @@ def getdata_feature(self):
 # gets top 5 author and count of bugs they created
 def getdata_bug_user(self):
     bugs = list(Bug.objects.values('author__username').annotate(count=Count('author')).order_by('-count')[:5])
-    print(bugs)
     return JsonResponse(bugs, safe=False)
 
 # gets top 5 authorand count if features they created

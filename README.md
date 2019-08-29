@@ -5,7 +5,7 @@
 # Unicorn_attractor
 ## Overview
 
-This website was set up to that allows registered users to request bug fixes and feature updates to our existing software. We
+This website was set up to allow registered users to request bug fixes and feature updates to our existing software. We
 make money from it by the users paying for extra features, but also helps us remove bugs from our software by having an on-line
 community. Bugs and features are prioritised based on the number of votes each has. As bugs are free, users are only allowed to 
 vote for each bug once. The bug with the most votes will be worked on. Features on the other hand the user can vote many times 
@@ -16,18 +16,18 @@ be worked on first. The company will split its time between working on features 
 
 ### What is this website for?
 This website was created to create revenue through adding extra features, and help to identify bugs on our existing software and
-and allows us to prioritise the bugs causing the most issues with our customers.
+allows us to prioritise the bugs causing the most issues with our customers.
 The benefit for the customer is they also get a better product due to reduced bugs in the software, but can also get extra 
 features added.
 
 ### User Stores
-This site is used by anyone using our software products. The users will be able to vote on features and bugs to fixed.
+This site can be used by anyone using our software products. The users will be able to vote on features and bugs to fixed.
 
 **Existing and New Users. **
 
 * Users should be able to see what the company does from the home page.
-* Users should be able to some metrics before deciding they want to join
-* Users should be to register with the company if they choose to join.
+* Users should be able to see some metrics before deciding they want to join
+* Users should be able to register with the company if they choose to join.
 * User should be able to reset their password if they have forgotten it.
 * Users should be able add bugs
 * Users should be able to vote for each bug once.
@@ -39,11 +39,10 @@ This site is used by anyone using our software products. The users will be able 
 * Users should be able to checkout the shopping cart and pay for the votes by the credit/debit card
 * Users should be able to comment on all feature raised. 
 * Users should be able to see comments from other users or company employees as well
-* Users should have their own profile page with their own bugs and features displayed if any along with some basic personal information.
-* Users should be able to dashboard with some site metrices.
+* Users should have their own profile page with their own bugs and features displayed if any, along with some basic personal information.
 
 
-In the design of this web page I decided to use Balsamiq to create my wire frames. I did two sets of screens one for mobile and the other for desktop. For mobile I only did screen that were significantly different from large screens. Both can be seen under assets\wire frames folder
+In the design of this web page I decided to use Balsamiq to create my wire frames. I did two sets of screens one for mobile and the other for desktop. For mobile I only did screens that were significantly different from large screens. Both can be seen under wireframes folder
 within the project.
 
 ### How does it work
@@ -61,9 +60,9 @@ within the project.
     
 * Reset Password
     - Password Reset Form with email
-    - Email sent with link to reset user's password.
-    - Page that allows you change your password.
-    - Message to tell you to log in when complete
+    - Email sent with link to reset user's password
+    - Page that allows you change your password
+    - Message to tell you to log in when completed
 
 * Home page
     -  The home page has information about the company, who we are and what we do as well as a two tables with some statistics for both Features and bugs
@@ -71,16 +70,16 @@ within the project.
 * Statistics
     - This page contains 5 graphs. 
     - Features vs bugs break down.
-    - Bugs with the most likes.
-    - Features with the most likes
-    - Count of Bugs created by each user
-    - Count of Features created by each user
+    - Top 5 Bugs with the most likes.
+    - Top 5 Features with the most likes
+    - Top 5 Count of Bugs created by each user
+    - Top 5 Count of Features created by each user
     
 * Profile Page
-    - This page has all the Bugs and features you have created as well as your name and e-mail address at the top.
+    - This page has all the Bugs and features the user has created as well as your name and e-mail address at the top.
 
 * Bugs Page
-    - Displays all bugs created on one page with all their details and status.
+    - Displays all bugs created on one page, starting with the one wuth the most likes with all their details and status.
 
 * Add Bug Page
     - This page allows user create to a Bug
@@ -93,7 +92,7 @@ within the project.
     - Allow a user to add a comment about the Bug.
 
 * Features Page
-    - Displays all Features created on one page with all there details and status.
+    - Displays all Features created on one page, start with the one with the most likes with all there details and status.
     - For each feature on the page you can add as many votes as you like to the shopping cart
 
 * Add Feature Page
@@ -120,7 +119,7 @@ within the project.
   - Would like to add pagination.
 
 ### Interesting Bugs
-  
+- 
 
 ## Some the tech used includes:
 - Base languages used to create website
@@ -150,9 +149,9 @@ within the project.
 - [gmail] (https://www.google.com/intl/en-GB/gmail/about/#/)
     - We use **gmail** used for sending e-mails to reset passwords
 - [d3] (https://d3js.org/)
-    - We use **D3** as a database for storing users and recipes
+    - We use **D3** for creating charts
 - [dc.js] (https://dc-js.github.io/dc.js/)
-    - We use **DC** for creating reactive charts
+    - We use **DC** for creating charts
 - [crossfilter] (https://mlab.com/welcome/)
     - We use **crossfilter** for grouping data together
 
@@ -179,12 +178,12 @@ within the project.
     - If password not the same, error message display.
     - If Username already in Database then error message is displayed
     - if no e-mail provided then an error message is displayed
-    - If everything okay user moved home page.
+    - If everything okay user moved profile page.
 
 - Login form
     - if Password or username incorrect, error message displayed
     - Can login with username or email
-    - If everything okay then page directed to home page
+    - If everything okay then page directed to profile page
 
 - Reset Password
   - Reset password functionality works once correct e-mail is provided
@@ -207,7 +206,7 @@ within the project.
   - Upvote will display error if you created this bug or already voted for this bug
   
 - Add Bug Page.
-  - Once Name description are added but will be added
+  - Once Name and description are added bug will be added
   - Error displayed if no name or descripton
 
 - Features Page
@@ -219,7 +218,7 @@ within the project.
   - Quantity must be filled in or will get an error
   
 - Add Feature Page.
-  - Once Name description is added but will be added
+  - Once Name and description is added, feature will be added
   - Error displayed if no name or description
 
 - Cart
@@ -235,7 +234,7 @@ within the project.
   - total purchase price displayed
   - payment form displayed correctly
   - Error message is displayed if required field is not entered
-  - Validation done on phone number is provided, expected correct format
+  - Validation done on phone number if provided, expected correct format
   - Invalid card will be declined
   - Expiry date error will display if month and year are earlier then this month and this year
   - Error message displayed if not correct payment information.
