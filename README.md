@@ -118,9 +118,6 @@ within the project.
 ### Features Left to Implement
   - Would like to add pagination.
 
-### Interesting Bugs
-- 
-
 ## Some the tech used includes:
 - Base languages used to create website
   -**Python**, **JavaScript**, **HTML**, **CSS**, **JINJA**
@@ -270,6 +267,9 @@ within the project.
     - checkout 97%
     - features 98%
   - For integration testing I used Travis CI which builds and tests my app every time I commit changed to GitHub
+  - Issue with two tests that would not work when running Travis is test_checkout_with_login_card_declined and test_checkout_with_login_post because of issues with No API key provided. 
+  In both cases I set stripe_id to tokens from the stripe website for testing. As both passed locally and manally in production site I went live anyway
+  because of time issues but will fix later.
 
 ### Site has been tested on mobile, tablet and laptop devices as well as testing on chrome for the different sizes.
 

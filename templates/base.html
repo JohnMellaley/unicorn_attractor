@@ -29,63 +29,71 @@
     <title>{% block page_title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="row hidden-xs menuheader">
-            <ul class="nav navbar-nav navbar-fixed-top text-primary">
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
-                    <li><a href="{% url 'features' %}">Features</a></li>
-                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                    <li>
-                        <a href="{% url 'view_cart' %}">
-                            <i class="fa fa-shipping-cart"></i>Cart
-                            {% if feature_count > 0 %}
-                                <label class="badge badge-warning">{{ feature_count }}</label>
-                            {% endif %}
-                        </a>
-                    </li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}  
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'registration' %}">Register</a></li>
-                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                {% endif %}
-                 
-            </ul>
-    </div>
-    <div class="row visible-xs">
-        <div class="navbar-dropdown col-xs-1">
-            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-			<ul class="menu-dropdown">
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
-                    <li><a href="{% url 'features' %}">Features</a></li>
-                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                    {% if feature_count > 0 %}
+    
+    <div class="hidden-xs">
+        <nav class="navbar-fixed-top">
+            
+                <ul class="nav navbar-nav text-primary">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                        <li><a href="{% url 'features' %}">Features</a></li>
+                        <li><a href="{% url 'statistics' %}">Statistics</a></li>
                         <li>
-                        
                             <a href="{% url 'view_cart' %}">
                                 <i class="fa fa-shipping-cart"></i>Cart
-                                <label class="badge badge-warning">{{ feature_count }}</label>
+                                {% if feature_count > 0 %}
+                                    <label class="badge badge-warning">{{ feature_count }}</label>
+                                {% endif %}
                             </a>
-                         
                         </li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}  
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'registration' %}">Register</a></li>
+                        <li><a href="{% url 'statistics' %}">Statistics</a></li>
                     {% endif %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}  
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'registration' %}">Register</a></li>
-                    <li><a href="{% url 'statistics' %}">Statistics</a></li>
-                {% endif %}
-            </ul>
+                     
+                </ul>
+            
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <div class="row visible-xs">
+        
+            <div class="navbar-dropdown col-xs-1">
+                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        		<ul class="menu-dropdown">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                        <li><a href="{% url 'features' %}">Features</a></li>
+                        <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                        {% if feature_count > 0 %}
+                            <li>
+                            
+                                <a href="{% url 'view_cart' %}">
+                                    <i class="fa fa-shipping-cart"></i>Cart
+                                    <label class="badge badge-warning">{{ feature_count }}</label>
+                                </a>
+                             
+                            </li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}  
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'registration' %}">Register</a></li>
+                        <li><a href="{% url 'statistics' %}">Statistics</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
-     
+    
     
      
     

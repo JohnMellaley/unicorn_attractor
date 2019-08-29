@@ -27,7 +27,7 @@ class TestViews(TestCase):
                                  'password':"john10"},follow=True)
         # test user goes to home page if detials correct
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "index.html")
+        self.assertTemplateUsed(page, "profile.html")
         #check correct message is displayed
         message = list(page.context.get('messages'))[0]
         self.assertEqual(message.tags, "success")
@@ -88,7 +88,7 @@ class TestViews(TestCase):
                                 follow=True)
         #check user redirected to home page
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "index.html")
+        self.assertTemplateUsed(page, "profile.html")
         #check message is correct
         message = list(page.context.get('messages'))[0]
         self.assertEqual(message.tags, "success")

@@ -9,8 +9,8 @@
     <div class="text-center">
         <h1>Welcome {{ user }} </h1>
         <h3>Email: {{ profile.email }}</h3>
-    {% if loop.index == 1 %}
-        <h3>Here is a list of your bugs</h3>
+    {% if bugs %}
+        <h3 class="profiletext">Here is a list of your bugs</h3>
     </div>
     {% endif %}
     <div class="row">
@@ -37,8 +37,8 @@
     {% endfor %}
      </div>
     <div class="row">
-    {% if loop.index == 1 %}
-    <h3 class="text-center">Here is a list of your features</h3>
+    {% if features %}
+        <h3 cclass="profiletext">Here is a list of your features</h3>
     {% endif %}
     {% for feature in features %}
         <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel">
