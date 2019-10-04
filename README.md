@@ -226,7 +226,7 @@ within the project.
   - Total updates when quantity of upvotes is adjusted
   - Checkout Button brings user to payment page
     
-- Payment Page
+- Payment Page (Use 4242424242424242 Visa for card number. Number provide by stripe)
   - Each selected feature for purchase has its details and quantity displayed correctly.
   - total purchase price displayed
   - payment form displayed correctly
